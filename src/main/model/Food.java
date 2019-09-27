@@ -9,6 +9,7 @@ public class Food {
     private double carbs;
     private double fats;
     Scanner in = new Scanner(System.in);
+
     //REQUIRES double parameters to be >=0
     //MODIFIES this
     //EFFECT sets the default variables values on this object

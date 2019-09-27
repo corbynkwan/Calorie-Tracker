@@ -2,9 +2,11 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class FoodList {
     private List<Food> foodList;
+    private Scanner in = new Scanner(System.in);
 
     public FoodList() {
         foodList = new ArrayList<>();
@@ -35,5 +37,32 @@ public class FoodList {
         return foodList.get(i);
     }
 
+    public void userInputFoodList() {
+        Food newFood;
+        System.out.println("Do you want to enter a new food (100g)? (Y for yes N for no)");
+        String input = in.nextLine();
+        do {
+            if (input.equals("Y") || input.equals("N")) {
+                newFood = askFood();
+                add(newFood);
+                System.out.println("Do you want to enter another food? (Y for yes N for no)");
+                in.nextLine();//Moves cursor down.
+                input = in.nextLine();
+            }
+        } while (input.equals("Y"));
+    }
 
+    public Food askFood() {
+        System.out.println("What's the name of your food?");
+        String name = in.nextLine();
+        System.out.println("How much calories does " + name + " have?");
+        double calories = in.nextDouble();
+        System.out.println("How much protein does " + name + " have?");
+        double protein = in.nextDouble();
+        System.out.println("How much carbs does " + name + " have?");
+        double carbs = in.nextDouble();
+        System.out.println("How much fats does " + name + " have?");
+        double fats = in.nextDouble();
+        return new Food(name, calories, protein, carbs, fats);
+    }
 }
