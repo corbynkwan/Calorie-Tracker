@@ -13,6 +13,7 @@ public class BodyBuildingDiet implements Diet, SaveAndLoad, Serializable {
     public double getTargetWeight() {
         return targetWeight;
     }
+    
     @Override
     public void setTargetWeight(double newTargetWeight) {
         targetWeight = newTargetWeight;
