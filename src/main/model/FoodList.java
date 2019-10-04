@@ -1,16 +1,24 @@
 package model;
 
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class FoodList {
+public class FoodList implements Serializable, SaveAndLoad {
     private List<Food> foodList;
-    private Scanner in = new Scanner(System.in);
+    private transient Scanner in = new Scanner(System.in);
 
+    //MODIFIES this
+    //EFFECT sets the actual type of foodList();
     public FoodList() {
         foodList = new ArrayList<>();
     }
+
     //MODIFIES this
     //EFFECT adds a new food to the foodList
 
@@ -37,6 +45,7 @@ public class FoodList {
         return foodList.get(i);
     }
 
+    //EFFECT ask the user for input and adds a food to the food list
     public void userInputFoodList() {
         Food newFood;
         System.out.println("Do you want to enter a new food (100g)? (Y for yes N for no)");
@@ -52,6 +61,8 @@ public class FoodList {
         } while (input.equals("Y"));
     }
 
+    //EFFECT ask the the questions for userInputFoodList() method
+
     public Food askFood() {
         System.out.println("What's the name of your food?");
         String name = in.nextLine();
@@ -64,5 +75,18 @@ public class FoodList {
         System.out.println("How much fats does " + name + " have?");
         double fats = in.nextDouble();
         return new Food(name, calories, protein, carbs, fats);
+    }
+
+    public Object load(String fileName) throws Exception {
+        try (ObjectInputStream in = new ObjectInputStream(Files.newInputStream(Paths.get(fileName)))) {
+            return in.readObject();
+        }
+    }
+
+    public void save(String fileName) throws Exception {
+        try (ObjectOutputStream out = new ObjectOutputStream(Files.newOutputStream(Paths.get(fileName)))) {
+            out.writeObject(this);
+            out.close();
+        }
     }
 }

@@ -1,14 +1,13 @@
 package model;
 
-import java.util.Scanner;
+import java.io.Serializable;
 
-public class Food {
+public class Food implements Serializable {
     private String name;
     private double calories;
     private double protein;
     private double carbs;
     private double fats;
-    Scanner in = new Scanner(System.in);
 
     //REQUIRES double parameters to be >=0
     //MODIFIES this
