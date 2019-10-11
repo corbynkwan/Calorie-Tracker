@@ -6,18 +6,10 @@ import java.io.Serializable;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-public class BodyBuildingDiet implements Diet, SaveAndLoad, Serializable {
-    double targetWeight;
+public class BodyBuildingDiet extends Diet implements SaveAndLoad, Serializable {
 
-    @Override
-    public double getTargetWeight() {
-        return targetWeight;
-    }
-    
-    @Override
-    public void setTargetWeight(double newTargetWeight) {
-        targetWeight = newTargetWeight;
-    }
+
+
 
     @Override
     public double calculateCal() {

@@ -6,16 +6,7 @@ import java.io.Serializable;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-public class KetoDiet implements Diet, Serializable, SaveAndLoad {
-    double targetWeight;
-
-    public double getTargetWeight() {
-        return targetWeight;
-    }
-
-    public void setTargetWeight(double newTargetWeight) {
-        targetWeight = newTargetWeight;
-    }
+public class KetoDiet extends Diet implements Serializable, SaveAndLoad {
 
     @Override
     public double calculateCal() {

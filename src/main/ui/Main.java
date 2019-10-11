@@ -1,10 +1,8 @@
 package ui;
 
-import model.*;
-
 public class Main {
     public static void main(String[] args) throws Exception {
-        FoodList list = new FoodList();
+/*        FoodList list = new FoodList();
         //list.userInputFoodList();
         list.add(new Food("chicken",200,200,200,200));
         list.add(new Food("beef",300,300,300,300));
@@ -22,9 +20,11 @@ public class Main {
         UserList userList = new UserList();
         userList.add(user1);
         userList.add(user2);
-        userList.printUserList();
-//Remember for the time when we need to add an abstract class just chane the SaveAndLoad class to an abstract class.
-//Is this allowed?
+        userList.printUserList();*/
+
+        UserInterface ui = new UserInterface();
+        ui.start();
+
     }
 
 }

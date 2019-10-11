@@ -1,17 +1,22 @@
 package model;
 
-public interface Diet {
+public abstract class Diet {
+    protected double targetWeight;
 
-    public double getTargetWeight();
+    public double getTargetWeight() {
+        return targetWeight;
+    }
 
-    public void setTargetWeight(double newTargetWeight);
+    public void setTargetWeight(double newTargetWeight) {
+        targetWeight = newTargetWeight;
+    }
 
-    public double calculateCal();
+    public abstract double calculateCal();
 
-    public double calculatePro();
+    public abstract double calculatePro();
 
-    public double calculateCarbs();
+    public abstract double calculateCarbs();
 
-    public double calculateFats();
+    public abstract double calculateFats();
 
 }

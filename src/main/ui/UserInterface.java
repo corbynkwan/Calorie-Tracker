@@ -7,30 +7,52 @@ import java.util.Scanner;
 public class UserInterface {
     private transient Scanner in = new Scanner(System.in);
     private UserList userList;
+    private FoodList foodList;
 
     UserInterface() {
-        userList = new UserList(); //Why is this bad practice? Why can't I just put it on top.
+        try {
+            userList = (UserList) userList.load("userList.dat");
+            foodList = (FoodList) foodList.load("foodList.dat");
+        } catch (Exception e) {
+            userList = new UserList();
+            foodList = new FoodList();
+        }
     }
 
     public void start() {
+        printUserItems();
+        int menuOption = in.nextInt();
+        in.nextLine();
+        switch (menuOption) {
+            case 1: menu1();
+            break;
+            case 3: menu3();
+            break;
+            case 6: menu6();
+            break;
+            case 7: menu7();
+            break;
+            case 8: menu8();
+            break;
+            case 10: System.exit(0);
+            break;
+            default: System.out.println("invalid input");
+        }
+    }
+
+    public void printUserItems() {
         System.out.println("Enter Option");
         System.out.println("1: Add User");
         System.out.println("2: Delete User");
         System.out.println("3: Add Food");
         System.out.println("4: Delete Food");
         System.out.println("5: Add Diet");
-        System.out.println("6: Change Diet");
-        int menuOption = in.nextInt();
+        System.out.println("6: View Food List");
+        System.out.println("7: View User List");
+        System.out.println("8: Save");
+        System.out.println("10: Exit");
 
-        switch (menuOption) {
-            case 1: menu1();
-            break;
-/*            case 2: menu2();
-            case 3: menu3();
-            case 4: menu4();
-            case 5: menu5();*/
-            default: System.out.println("invalid input");
-        }
+        //   System.out.println("6: Change Diet");
     }
 
     public void menu1() {
@@ -52,6 +74,34 @@ public class UserInterface {
         userList.add(newUser);
         System.out.println("User added");
         start();
+    }
+
+    public void menu3() {
+        foodList.userInputFoodList();
+        start();
+
+    }
+
+    public void menu6() {
+        foodList.printFoodList();
+        System.out.println("Food List printed");
+        start();
+    }
+
+    public void menu7() {
+        userList.printUserList();
+        start();
+    }
+
+    public void menu8() {
+        try {
+            foodList.save("foodList.dat");
+            userList.save("userList.dat");
+        } catch (Exception e) {
+            System.out.println("Error: Unable to save \n");
+            e.printStackTrace();
+            //Why do I need to handle Exception here? Didn't I handle it in this method?
+        }
     }
 
 }
