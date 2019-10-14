@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class testFoodList {
+public class FoodListTest {
     FoodList list;
     Food f;
     @BeforeEach
@@ -26,5 +26,19 @@ public class testFoodList {
         assertEquals(f.toString(), list.get(0).toString());
     }
 
+
+    @Test
+    void testGetFoodList() {
+        assertEquals(list,list.getFoodList());
+    }
+
+    @Test
+    void testGetSize() {
+        assertEquals(0,list.size());
+    }
+    @Test
+    void testPrintFoodList() {
+        list.printFoodList();
+    }
 
 }

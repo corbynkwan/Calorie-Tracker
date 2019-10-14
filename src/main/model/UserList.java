@@ -1,14 +1,10 @@
 package model;
 
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.io.Serializable;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserList implements Serializable, SaveAndLoad {
+public class UserList extends SaveAndLoad implements Serializable {
     private List<User> userList;
 
     public UserList() {
@@ -39,19 +35,4 @@ public class UserList implements Serializable, SaveAndLoad {
         return userList.get(i);
     }
 
-
-    @Override
-    public void save(String fileName) throws Exception {
-        try (ObjectOutputStream out = new ObjectOutputStream(Files.newOutputStream(Paths.get(fileName)))) {
-            out.writeObject(this);
-            out.close();
-        }
-    }
-
-    @Override
-    public Object load(String fileName) throws Exception {
-        try (ObjectInputStream in = new ObjectInputStream(Files.newInputStream(Paths.get(fileName)))) {
-            return in.readObject();
-        }
-    }
 }

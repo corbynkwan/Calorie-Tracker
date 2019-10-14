@@ -75,6 +75,10 @@ class FoodTest {
         assertEquals(50,def.getFats());
     }
 
+    @Test
+    public void printString() {
+        assertEquals(f.toString(), f.toString());
+    }
 
 
 

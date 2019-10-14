@@ -1,12 +1,8 @@
 package model;
 
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.io.Serializable;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
-public class KetoDiet extends Diet implements Serializable, SaveAndLoad {
+public class KetoDiet extends Diet implements Serializable {
 
     @Override
     public double calculateCal() {
@@ -32,18 +28,5 @@ public class KetoDiet extends Diet implements Serializable, SaveAndLoad {
         return calculatedFats;
     }
 
-    @Override
-    public void save(String fileName) throws Exception {
-        try (ObjectOutputStream out = new ObjectOutputStream(Files.newOutputStream(Paths.get(fileName)))) {
-            out.writeObject(this);
-            out.close();
-        }
-    }
 
-    @Override
-    public Object load(String fileName) throws Exception {
-        try (ObjectInputStream in = new ObjectInputStream(Files.newInputStream(Paths.get(fileName)))) {
-            return in.readObject();
-        }
-    }
 }

@@ -1,14 +1,8 @@
 package model;
 
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.io.Serializable;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
-public class BodyBuildingDiet extends Diet implements SaveAndLoad, Serializable {
-
-
+public class BodyBuildingDiet extends Diet implements Serializable {
 
 
     @Override
@@ -36,18 +30,7 @@ public class BodyBuildingDiet extends Diet implements SaveAndLoad, Serializable 
         return calculatedFats;
     }
 
-    public Object load(String fileName) throws Exception {
-        try (ObjectInputStream in = new ObjectInputStream(Files.newInputStream(Paths.get(fileName)))) {
-            return in.readObject();
-        }
-    }
-
-    public void save(String fileName) throws Exception {
-        try (ObjectOutputStream out = new ObjectOutputStream(Files.newOutputStream(Paths.get(fileName)))) {
-            out.writeObject(this);
-            out.close();
-        }
-    }
-
-
 }
+
+
+

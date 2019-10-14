@@ -1,12 +1,8 @@
 package model;
 
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.io.Serializable;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
-public class User implements Serializable, SaveAndLoad {
+public class User implements Serializable {
     private String name;
     private Diet dietType;
     private double targetWeight;
@@ -48,18 +44,4 @@ public class User implements Serializable, SaveAndLoad {
                 dietType.calculatePro(), dietType.calculateCarbs(), dietType.calculateFats());
     }
 
-
-    @Override
-    public void save(String fileName) throws Exception {
-        try (ObjectOutputStream out = new ObjectOutputStream(Files.newOutputStream(Paths.get(fileName)))) {
-            out.writeObject(this);
-        }
-    }
-
-    @Override
-    public Object load(String fileName) throws Exception {
-        try (ObjectInputStream in = new ObjectInputStream(Files.newInputStream(Paths.get(fileName)))) {
-            return in.readObject();
-        }
-    }
 }

@@ -2,9 +2,14 @@ package ui;
 
 import model.*;
 
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Scanner;
 
-public class UserInterface {
+public class UserInterface extends SaveAndLoad implements Serializable {
     private transient Scanner in = new Scanner(System.in);
     private UserList userList;
     private FoodList foodList;
@@ -77,7 +82,7 @@ public class UserInterface {
     }
 
     public void menu3() {
-        foodList.userInputFoodList();
+        userInputFoodList();
         start();
 
     }
@@ -100,7 +105,54 @@ public class UserInterface {
         } catch (Exception e) {
             System.out.println("Error: Unable to save \n");
             e.printStackTrace();
-            //Why do I need to handle Exception here? Didn't I handle it in this method?
+        }
+    }
+
+    //UI Food/FoodList methods
+    //EFFECT ask the user for input and adds a food to the food list
+    public void userInputFoodList() {
+        Food newFood;
+        System.out.println("Do you want to enter a new food (100g)? (Y for yes N for no)");
+        String input = in.nextLine();
+        do {
+            if (input.equals("Y") || input.equals("N")) {
+                newFood = askFood();
+                foodList.add(newFood);
+                System.out.println("Do you want to enter another food? (Y for yes N for no)");
+                in.nextLine();//Moves cursor down.
+                input = in.nextLine();
+            }
+        } while (input.equals("Y"));
+    }
+
+    //EFFECT ask the the questions for userInputFoodList() method
+
+    public Food askFood() {
+        System.out.println("What's the name of your food?");
+        String name = in.nextLine();
+        System.out.println("How much calories does " + name + " have?");
+        double calories = in.nextDouble();
+        System.out.println("How much protein does " + name + " have?");
+        double protein = in.nextDouble();
+        System.out.println("How much carbs does " + name + " have?");
+        double carbs = in.nextDouble();
+        System.out.println("How much fats does " + name + " have?");
+        double fats = in.nextDouble();
+        return new Food(name, calories, protein, carbs, fats);
+    }
+
+
+    @Override
+    public void save(String fileName) throws Exception {
+        try (ObjectOutputStream out = new ObjectOutputStream(Files.newOutputStream(Paths.get(fileName)))) {
+            out.writeObject(this);
+        }
+    }
+
+    @Override
+    public Object load(String fileName) throws Exception {
+        try (ObjectInputStream in = new ObjectInputStream(Files.newInputStream(Paths.get(fileName)))) {
+            return in.readObject();
         }
     }
 

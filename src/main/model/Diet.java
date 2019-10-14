@@ -1,6 +1,8 @@
 package model;
 
-public abstract class Diet {
+import java.io.Serializable;
+
+public abstract class Diet extends SaveAndLoad implements Serializable {
     protected double targetWeight;
 
     public double getTargetWeight() {
@@ -18,5 +20,6 @@ public abstract class Diet {
     public abstract double calculateCarbs();
 
     public abstract double calculateFats();
+
 
 }
