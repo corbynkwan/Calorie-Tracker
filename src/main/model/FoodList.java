@@ -27,9 +27,11 @@ public class FoodList extends SaveAndLoad implements Serializable {
         return foodList;
     }
 
+    //EFFECT returns the size of the foodList
     public int size() {
         return foodList.size();
     }
+
     //REQUIRES foodList to have a length >=1
     //EFFECT prints out the whole food list in a format
     public void printFoodList() {
