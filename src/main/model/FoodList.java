@@ -22,11 +22,6 @@ public class FoodList extends SaveAndLoad implements Serializable {
         foodList.add(newFood);
     }
 
-    //EFFECT returns the foodList
-    public List<Food> getFoodList() {
-        return foodList;
-    }
-
     //EFFECT returns the size of the foodList
     public int size() {
         return foodList.size();

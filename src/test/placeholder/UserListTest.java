@@ -14,17 +14,13 @@ class UserListTest {
 
     @BeforeEach
     public void runBefore() {
+        userList = new UserList();
         u = new User("dave", new BodyBuildingDiet(), 155);
     }
     @Test
     void add() {
         userList.add(u);
         assertEquals(u, userList.get(0));
-    }
-
-    @Test
-    void getUserList() {
-        assertEquals(userList.getUserList(),userList);
     }
 
     @Test
@@ -35,6 +31,7 @@ class UserListTest {
 
     @Test
     void get() {
+        userList.add(u);
         assertEquals(userList.get(0), u);
     }
 }

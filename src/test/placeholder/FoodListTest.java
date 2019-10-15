@@ -26,12 +26,6 @@ public class FoodListTest {
         assertEquals(f.toString(), foodList.get(0).toString());
     }
 
-
-    @Test
-    void testGetFoodList() {
-        assertEquals(foodList, foodList.getFoodList());
-    }
-
     @Test
     void testGetSize() {
         assertEquals(0, foodList.size());

@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class DietTest {
     Diet b;
-
+    Diet k;
     @BeforeEach
     public void runBefore() {
         b = new BodyBuildingDiet();

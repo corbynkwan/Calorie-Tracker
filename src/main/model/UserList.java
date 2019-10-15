@@ -16,11 +16,6 @@ public class UserList extends SaveAndLoad implements Serializable {
         userList.add(newUser);
     }
 
-    //EFFECT returns the userList
-    public List<User> getUserList() {
-        return userList;
-    }
-
     //REQUIRES userList to have a length >=1
     //EFFECT prints out the whole user list in a format
     public void printUserList() {

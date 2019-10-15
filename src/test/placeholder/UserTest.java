@@ -60,5 +60,7 @@ class UserTest {
     @Test
     void printString() {
         u.printString();
+        u.setDietType(new KetoDiet());
+        u.printString();
     }
 }
