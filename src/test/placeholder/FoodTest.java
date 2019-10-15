@@ -77,7 +77,7 @@ class FoodTest {
 
     @Test
     public void printString() {
-        assertEquals(f.toString(), f.toString());
+        f.printString();
     }
 
 

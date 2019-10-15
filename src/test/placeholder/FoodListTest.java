@@ -8,37 +8,40 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class FoodListTest {
-    FoodList list;
+    FoodList foodList;
     Food f;
     @BeforeEach
     public void runBefore() {
-        list =  new FoodList();
+        foodList =  new FoodList();
     }
     @Test
     public void testAdd() {
         f = new Food();
-        list.add(f);
-        assertEquals(f.toString(), list.get(0).toString());
+        foodList.add(f);
+        assertEquals(f.toString(), foodList.get(0).toString());
     }
     @Test
     public void testGet() {
         f = new Food();
-        assertEquals(f.toString(), list.get(0).toString());
+        assertEquals(f.toString(), foodList.get(0).toString());
     }
 
 
     @Test
     void testGetFoodList() {
-        assertEquals(list,list.getFoodList());
+        assertEquals(foodList, foodList.getFoodList());
     }
 
     @Test
     void testGetSize() {
-        assertEquals(0,list.size());
+        assertEquals(0, foodList.size());
     }
     @Test
     void testPrintFoodList() {
-        list.printFoodList();
+        foodList.printFoodList();
+        f = new Food();
+        foodList.add(f);
+        foodList.printFoodList();
     }
 
 }
