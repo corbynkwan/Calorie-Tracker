@@ -36,4 +36,5 @@ public class InvalidInputExceptionTest {
         }
         assertTrue(d.getTargetWeight() == 0);
     }
+
 }
