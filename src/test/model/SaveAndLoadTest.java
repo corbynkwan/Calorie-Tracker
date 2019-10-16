@@ -1,7 +1,5 @@
-package placeholder;
+package model;
 
-import model.BodyBuildingDiet;
-import model.Diet;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

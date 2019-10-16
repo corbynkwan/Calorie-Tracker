@@ -1,5 +1,7 @@
 package model;
 
+import exceptions.InvalidInputException;
+
 import java.io.Serializable;
 
 public abstract class Diet extends SaveAndLoad implements Serializable {
@@ -9,7 +11,10 @@ public abstract class Diet extends SaveAndLoad implements Serializable {
         return targetWeight;
     }
 
-    public void setTargetWeight(double newTargetWeight) {
+    public void setTargetWeight(double newTargetWeight) throws InvalidInputException {
+        if (newTargetWeight < 0) {
+            throw new InvalidInputException();
+        }
         targetWeight = newTargetWeight;
     }
 

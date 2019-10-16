@@ -1,5 +1,7 @@
 package model;
 
+import exceptions.InvalidInputException;
+
 import java.io.Serializable;
 
 public class User implements Serializable {
@@ -7,7 +9,7 @@ public class User implements Serializable {
     private Diet dietType;
     private double targetWeight;
 
-    public User(String newName, Diet newDietType, double newTargetWeight) {
+    public User(String newName, Diet newDietType, double newTargetWeight) throws InvalidInputException {
         name = newName;
         dietType = newDietType;
         targetWeight = newTargetWeight;

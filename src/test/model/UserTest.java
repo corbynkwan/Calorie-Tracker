@@ -1,9 +1,6 @@
-package placeholder;
+package model;
 
-import model.BodyBuildingDiet;
-import model.Diet;
-import model.KetoDiet;
-import model.User;
+import exceptions.InvalidInputException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -13,7 +10,7 @@ class UserTest {
     User u;
     Diet d;
     @BeforeEach
-    void runBefore() {
+    void runBefore() throws InvalidInputException {
         d = new BodyBuildingDiet();
         u = new User("Dave", d, 155);
     }

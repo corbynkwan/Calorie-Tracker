@@ -1,7 +1,6 @@
-package placeholder;
+package model;
 
-import model.BodyBuildingDiet;
-import model.Diet;
+import exceptions.InvalidInputException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -16,7 +15,7 @@ public class DietTest {
     }
 
     @Test
-    public void testGetAndSetTargetWeight() {
+    public void testGetAndSetTargetWeight() throws InvalidInputException {
         b.setTargetWeight(70);
         assertEquals(b.getTargetWeight(), 70);
     }

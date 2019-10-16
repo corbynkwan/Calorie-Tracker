@@ -1,5 +1,6 @@
 package ui;
 
+import exceptions.InvalidInputException;
 import model.*;
 
 import java.io.ObjectInputStream;
@@ -21,10 +22,13 @@ public class UserInterface extends SaveAndLoad implements Serializable {
         } catch (Exception e) {
             userList = new UserList();
             foodList = new FoodList();
+            //When we reach user interactivibility just make it so that the user can select their file
+            //and redirect the default filepath to that file by setting a private variable on the top
+            //called private String userListFilePath
         }
     }
 
-    public void start() {
+    public void start() throws InvalidInputException {
         printUserItems();
         int menuOption = in.nextInt();
         in.nextLine();
@@ -41,7 +45,7 @@ public class UserInterface extends SaveAndLoad implements Serializable {
             break;
             case 10: System.exit(0);
             break;
-            default: System.out.println("invalid input");
+            default: throw new InvalidInputException(); //System.out.println("invalid input");
         }
     }
 
@@ -60,7 +64,7 @@ public class UserInterface extends SaveAndLoad implements Serializable {
         //   System.out.println("6: Change Diet");
     }
 
-    public void menu1() {
+    public void menu1() throws InvalidInputException {
         Diet diet = null;
         System.out.println("Enter your name");
         String name = in.nextLine();
@@ -81,19 +85,19 @@ public class UserInterface extends SaveAndLoad implements Serializable {
         start();
     }
 
-    public void menu3() {
+    public void menu3() throws InvalidInputException {
         userInputFoodList();
         start();
 
     }
 
-    public void menu6() {
+    public void menu6() throws InvalidInputException {
         foodList.printFoodList();
         System.out.println("Food List printed");
         start();
     }
 
-    public void menu7() {
+    public void menu7() throws InvalidInputException {
         userList.printUserList();
         start();
     }
@@ -110,17 +114,22 @@ public class UserInterface extends SaveAndLoad implements Serializable {
 
     //UI Food/FoodList methods
     //EFFECT ask the user for input and adds a food to the food list
-    public void userInputFoodList() {
+    public void userInputFoodList() throws InvalidInputException {
         Food newFood;
         System.out.println("Do you want to enter a new food (100g)? (Y for yes N for no)");
         String input = in.nextLine();
         do {
-            if (input.equals("Y") || input.equals("N")) {
+            if (input.equalsIgnoreCase("Y") || input.equalsIgnoreCase("N")) {
                 newFood = askFood();
                 foodList.add(newFood);
                 System.out.println("Do you want to enter another food? (Y for yes N for no)");
                 in.nextLine();//Moves cursor down.
                 input = in.nextLine();
+                if (!(input.equalsIgnoreCase("Y") || input.equalsIgnoreCase("N"))) {
+                    throw new InvalidInputException();
+                }
+            } else {
+                throw new InvalidInputException();
             }
         } while (input.equals("Y"));
     }
