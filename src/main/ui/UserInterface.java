@@ -3,11 +3,8 @@ package ui;
 import exceptions.InvalidInputException;
 import model.*;
 
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.IOException;
 import java.io.Serializable;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.Scanner;
 
 public class UserInterface extends SaveAndLoad implements Serializable {
@@ -17,14 +14,19 @@ public class UserInterface extends SaveAndLoad implements Serializable {
 
     UserInterface() {
         try {
-            userList = (UserList) userList.load("userList.dat");
-            foodList = (FoodList) foodList.load("foodList.dat");
-        } catch (Exception e) {
+            //How to go back the file
+            userList = (UserList) load("userList.dat");
+            foodList = (FoodList) load("foodList.dat");
+        } catch (IOException e) {
+            System.out.println("Files couldn't be loaded so new file for UserList and FoodList are created");
+//            e.getStackTrace();
             userList = new UserList();
             foodList = new FoodList();
             //When we reach user interactivibility just make it so that the user can select their file
             //and redirect the default filepath to that file by setting a private variable on the top
             //called private String userListFilePath
+        } catch (ClassNotFoundException e) {
+            System.out.println(e.getStackTrace());
         }
     }
 
@@ -102,14 +104,15 @@ public class UserInterface extends SaveAndLoad implements Serializable {
         start();
     }
 
-    public void menu8() {
+    public void menu8() throws InvalidInputException {
         try {
-            foodList.save("foodList.dat");
-            userList.save("userList.dat");
+            save("C:/Users/corby/Documents/project_i3b3b/data/foodList.dat");
+            save("C:Users/corby/Documents/project_i3b3b/data/userList.dat");
         } catch (Exception e) {
             System.out.println("Error: Unable to save \n");
             e.printStackTrace();
         }
+        start();
     }
 
     //UI Food/FoodList methods
@@ -150,20 +153,6 @@ public class UserInterface extends SaveAndLoad implements Serializable {
         return new Food(name, calories, protein, carbs, fats);
     }
 
-
-    @Override
-    public void save(String fileName) throws Exception {
-        try (ObjectOutputStream out = new ObjectOutputStream(Files.newOutputStream(Paths.get(fileName)))) {
-            out.writeObject(this);
-        }
-    }
-
-    @Override
-    public Object load(String fileName) throws Exception {
-        try (ObjectInputStream in = new ObjectInputStream(Files.newInputStream(Paths.get(fileName)))) {
-            return in.readObject();
-        }
-    }
 
 }
 

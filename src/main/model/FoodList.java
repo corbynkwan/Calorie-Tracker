@@ -1,13 +1,13 @@
 package model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class FoodList extends SaveAndLoad implements Serializable {
-    private List<Food> foodList;
+    protected List<Food> foodList;
+    private PriorityFoodList priorityFoodList;
     private transient Scanner in = new Scanner(System.in);
+    HashMap<Character,String> sortedFoodList = new HashMap<Character,String>();
 
     //MODIFIES this
     //EFFECT sets the actual type of foodList();
@@ -17,9 +17,31 @@ public class FoodList extends SaveAndLoad implements Serializable {
 
     //MODIFIES this
     //EFFECT adds a new food to the foodList
+    public void setPriorityFoodList(PriorityFoodList newPriorityFoodList) {
+        priorityFoodList = newPriorityFoodList;
+    }
 
     public void add(Food newFood) {
-        foodList.add(newFood);
+        boolean addFoodList = true;
+        if (!foodList.contains(newFood)) {
+            foodList.add(newFood);
+            priorityFoodList.getPriorityFoodList().add(newFood);
+        }
+
+    }
+
+    public void remove(String foodName) {
+        for (int i = 0; i < priorityFoodList.priorityFoodList.size(); i++) {
+            if (priorityFoodList.priorityFoodList.get(i).getName().equals(foodName)) {
+                priorityFoodList.priorityFoodList.remove(i);
+            }
+        }
+
+        for (int i = 0; i < foodList.size(); i++) {
+            if (foodList.get(i).getName().equals(foodName)) {
+                foodList.remove(i);
+            }
+        }
     }
 
     //EFFECT returns the size of the foodList

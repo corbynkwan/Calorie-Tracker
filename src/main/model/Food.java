@@ -98,5 +98,16 @@ public class Food implements Serializable {
                 + "%-10.2f" + "Fats:" + "%-10.2f \n", name, calories, protein, carbs, fats);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        Food f = (Food)o;
 
+        return this.name.equals(f.getName());
+    }
+
+    @Override
+    public int hashCode() {
+        char c = name.charAt(0);
+        return (int)c;
+    }
 }

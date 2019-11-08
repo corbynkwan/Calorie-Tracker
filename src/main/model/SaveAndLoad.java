@@ -1,5 +1,6 @@
 package model;
 
+import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.nio.file.Files;
@@ -12,7 +13,7 @@ public class SaveAndLoad {
         }
     }
 
-    public Object load(String fileName) throws Exception {
+    public Object load(String fileName) throws IOException, ClassNotFoundException {
         try (ObjectInputStream in = new ObjectInputStream(Files.newInputStream(Paths.get(fileName)))) {
             return in.readObject();
         }
