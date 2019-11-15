@@ -24,10 +24,15 @@ public class FoodList extends SaveAndLoad implements Serializable {
         foodList.add(newFood);
     }
 
-    public void remove(String foodName) {
-        foodList.remove(foodName);
+    public void remove(Food newFood) {
+        foodList.remove(newFood);
     }
 
+    public void remove(String foodName) {
+        if (foodList.contains(foodName)) {
+            foodList.remove(foodName);
+        }
+    }
 
     //EFFECT returns the size of the foodList
     public int size() {
