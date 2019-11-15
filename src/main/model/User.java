@@ -34,6 +34,7 @@ public class User extends Observable implements Serializable {
     public void setName(String newName) {
         name = newName;
     }
+
     public void setDietType(Diet newDietType) {
         dietType = newDietType;
     }
