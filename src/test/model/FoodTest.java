@@ -3,7 +3,7 @@ package model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 class FoodTest {
     Food def;
@@ -79,6 +79,12 @@ class FoodTest {
         f.printString();
     }
 
-
+    @Test
+    public void testEquals() {
+        assertTrue(f.equals("cod"));
+        Food temp = new Food("cod", 81,18, 5, 0.7);
+        assertTrue(f.equals(temp));
+        assertFalse(f.equals(new FoodList()));
+    }
 
 }

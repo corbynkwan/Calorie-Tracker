@@ -100,9 +100,15 @@ public class Food implements Serializable {
 
     @Override
     public boolean equals(Object o) {
-        Food f = (Food)o;
-
-        return this.name.equals(f.getName());
+        if (o instanceof Food) {
+            Food f = (Food) o;
+            return this.name.equals(f.getName());
+        } else if (o instanceof String) {
+            String s = (String) o;
+            return this.name.equals(s);
+        } else {
+            return false;
+        }
     }
 
     @Override
