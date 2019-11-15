@@ -21,7 +21,7 @@ public abstract class Diet extends SaveAndLoad implements Serializable, Observer
         if (newTargetWeight < 0) {
             throw new InvalidInputException();
         }
-        targetWeight = newTargetWeight;
+        targetWeight = newTargetWeight; //
     }
 
     public abstract double calculateCal();
