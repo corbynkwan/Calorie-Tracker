@@ -1,7 +1,5 @@
 package model;
 
-import model.Food;
-import model.FoodList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

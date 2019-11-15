@@ -5,9 +5,7 @@ import java.util.*;
 
 public class FoodList extends SaveAndLoad implements Serializable {
     protected List<Food> foodList;
-    private PriorityFoodList priorityFoodList;
     private transient Scanner in = new Scanner(System.in);
-    HashMap<Character,String> sortedFoodList = new HashMap<Character,String>();
 
     //MODIFIES this
     //EFFECT sets the actual type of foodList();
@@ -17,32 +15,19 @@ public class FoodList extends SaveAndLoad implements Serializable {
 
     //MODIFIES this
     //EFFECT adds a new food to the foodList
-    public void setPriorityFoodList(PriorityFoodList newPriorityFoodList) {
-        priorityFoodList = newPriorityFoodList;
+
+    public List<Food> getFoodList() {
+        return foodList;
     }
 
     public void add(Food newFood) {
-        boolean addFoodList = true;
-        if (!foodList.contains(newFood)) {
-            foodList.add(newFood);
-            priorityFoodList.getPriorityFoodList().add(newFood);
-        }
-
+        foodList.add(newFood);
     }
 
     public void remove(String foodName) {
-        for (int i = 0; i < priorityFoodList.priorityFoodList.size(); i++) {
-            if (priorityFoodList.priorityFoodList.get(i).getName().equals(foodName)) {
-                priorityFoodList.priorityFoodList.remove(i);
-            }
-        }
-
-        for (int i = 0; i < foodList.size(); i++) {
-            if (foodList.get(i).getName().equals(foodName)) {
-                foodList.remove(i);
-            }
-        }
+        foodList.remove(foodName);
     }
+
 
     //EFFECT returns the size of the foodList
     public int size() {

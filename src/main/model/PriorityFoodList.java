@@ -36,9 +36,7 @@ public class PriorityFoodList extends FoodList {
     public void add(Food newFood) {
         if (!priorityFoodList.contains(newFood)) {
             priorityFoodList.add(newFood);
-            priorityFoodList.add(newFood);
-            foodList.foodList.add(newFood);
-
+            foodList.getFoodList().add(newFood);
         }
     }
 
