@@ -7,9 +7,6 @@ import model.User;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        //Did try and catch for Y and N for askFood
-        //Did try and catch for loading and saving files @ constructor of UserInterface()
-        //Did try and catch for Diet set weight @ Diet class
         User u = new User("bob", new BodyBuildingDiet(), 155);
         System.out.println(u.getTargetWeight());
         System.out.println(u.getDietType().getTargetWeight());

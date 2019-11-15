@@ -8,8 +8,6 @@ import org.jsoup.select.Elements;
 import java.io.IOException;
 
 public class FoodSummary {
-
-
     //Using jsoup to make life easier for myself
     public String fetchFirstParagraph(String article) throws IOException {
         String url = "https://en.wikipedia.org/wiki/Chicken_as_food";
