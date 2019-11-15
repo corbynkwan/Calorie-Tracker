@@ -16,7 +16,8 @@ public class Main {
         u.setTargetWeight(55);
         System.out.println(u.getTargetWeight());
         System.out.println(u.getDietType().getTargetWeight());
-        FoodSummary fs= new FoodSummary();
+        FoodSummary fs = new FoodSummary();
+
 
         System.out.println(fs.fetchFirstParagraph("chicken_as_food"));
         try {
