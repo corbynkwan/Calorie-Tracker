@@ -1,7 +1,9 @@
 package model;
 
 import java.io.Serializable;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 public class FoodList extends SaveAndLoad implements Serializable {
     protected List<Food> foodList;
@@ -29,6 +31,8 @@ public class FoodList extends SaveAndLoad implements Serializable {
     }
 
     public void remove(String foodName) {
+      //  Food food = new Food(foodName,5,5,5,5);
+
         if (foodList.contains(foodName)) {
             foodList.remove(foodName);
         }

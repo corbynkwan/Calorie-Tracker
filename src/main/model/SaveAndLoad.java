@@ -6,7 +6,7 @@ import java.io.ObjectOutputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-public class SaveAndLoad {
+public class SaveAndLoad  {
     public void save(String fileName) throws Exception {
         try (ObjectOutputStream out = new ObjectOutputStream(Files.newOutputStream(Paths.get(fileName)))) {
             out.writeObject(this);

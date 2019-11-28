@@ -12,8 +12,18 @@ public class UserList extends SaveAndLoad implements Serializable {
     }
     //EFFECT adds a new user to the userList
 
-    public void add(User newUser) {
-        userList.add(newUser);
+    public boolean add(User newUser) {
+        if (!(userList.contains(newUser))) {
+            userList.add(newUser);
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    public boolean contains(User newUser) {
+        return userList.contains(newUser);
     }
 
     //REQUIRES userList to have a length >=1
@@ -23,6 +33,9 @@ public class UserList extends SaveAndLoad implements Serializable {
             userList.get(i).printString();
         }
     }
+    public int size() {
+        return userList.size();
+    }
 
     //REQUIRES i to have a length >=0
     //EFFECT returns the Food at index i
@@ -30,4 +43,7 @@ public class UserList extends SaveAndLoad implements Serializable {
         return userList.get(i);
     }
 
+    public void remove(User user) {
+        userList.remove(user);
+    }
 }

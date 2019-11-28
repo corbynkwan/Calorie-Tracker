@@ -15,13 +15,14 @@ public class FoodListTest {
     }
     @Test
     public void testAdd() {
-        f = new Food();
+        f = new Food("s",5,5,5,5);
         foodList.add(f);
         assertEquals(f.toString(), foodList.get(0).toString());
     }
     @Test
     public void testGet() {
-        f = new Food();
+        f = new Food("n",5,5,5,5);
+        foodList.add(f);
         assertEquals(f.toString(), foodList.get(0).toString());
     }
 
@@ -35,6 +36,8 @@ public class FoodListTest {
         foodList.add(f);
 
         foodList.remove("cod");
+        assertTrue(foodList.size() == 0);
+
 
     }
 

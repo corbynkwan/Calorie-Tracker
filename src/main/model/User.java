@@ -53,4 +53,9 @@ public class User extends Observable implements Serializable {
                 dietType.calculatePro(), dietType.calculateCarbs(), dietType.calculateFats());
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        User other = (User)obj;
+        return getName().equals(other.getName());
+    }
 }
