@@ -46,7 +46,7 @@ public class ViewFoodListGUI extends JFrame implements ActionListener {
         setLayout(new FlowLayout());
         setVisible(true); //Better to put the methods here so you don't call them in the main method.
         setSize(500, 600);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//
 
     }
 
