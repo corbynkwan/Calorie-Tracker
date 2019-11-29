@@ -10,26 +10,29 @@ public class FoodList extends SaveAndLoad implements Serializable {
     private transient Scanner in = new Scanner(System.in);
 
     //MODIFIES this
-    //EFFECT sets the actual type of foodList();
+    //EFFECTS sets the actual type of foodList();
     public FoodList() {
         foodList = new ArrayList<>();
     }
-
-    //MODIFIES this
-    //EFFECT adds a new food to the foodList
 
     public List<Food> getFoodList() {
         return foodList;
     }
 
+    //MODIFIES this
+    //EFFECTS adds a new food to the foodList
     public void add(Food newFood) {
         foodList.add(newFood);
     }
 
+    //MODIFIES this
+    //EFFECTS remove specified food object from the foodList
     public void remove(Food newFood) {
         foodList.remove(newFood);
     }
 
+    //MODIFIES this
+    //EFFECTS remove specified name of food from the foodList
     public void remove(String foodName) {
       //  Food food = new Food(foodName,5,5,5,5);
 

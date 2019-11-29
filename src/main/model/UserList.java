@@ -10,8 +10,8 @@ public class UserList extends SaveAndLoad implements Serializable {
     public UserList() {
         userList = new ArrayList<User>();
     }
-    //EFFECT adds a new user to the userList
 
+    //EFFECT Checks if a user exists with the same name. If not adds a new user to the userList
     public boolean add(User newUser) {
         if (!(userList.contains(newUser))) {
             userList.add(newUser);
@@ -22,6 +22,7 @@ public class UserList extends SaveAndLoad implements Serializable {
 
     }
 
+    //Checks if a user with the same name is in the userList.
     public boolean contains(User newUser) {
         return userList.contains(newUser);
     }
@@ -33,6 +34,8 @@ public class UserList extends SaveAndLoad implements Serializable {
             userList.get(i).printString();
         }
     }
+
+    //returns the size of the userList
     public int size() {
         return userList.size();
     }
@@ -43,6 +46,7 @@ public class UserList extends SaveAndLoad implements Serializable {
         return userList.get(i);
     }
 
+    //Removes a user from the userList.
     public void remove(User user) {
         userList.remove(user);
     }

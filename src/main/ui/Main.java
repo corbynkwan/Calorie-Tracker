@@ -1,13 +1,12 @@
 package ui;
 
-import model.*;
-
-import java.util.ArrayList;
-
 //
 //
 public class Main {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws Exception {/*
+        FoodSummary fs = new FoodSummary();
+        System.out.println(fs.fetchSummary("Chicken"));
+
         UserList userList = new UserList();
         User bob = new User("Bob",new BodyBuildingDiet(),155);
         userList.add(bob);
@@ -50,12 +49,13 @@ public class Main {
             //Make the name of food inlude grams? Or make the user enter the amount of grams.
             //Show Food List
         }
-
+*/
 
 
 
              SelectUserGUI mainMenu = new SelectUserGUI();
 
-    }
 
+
+}
 }

@@ -9,9 +9,6 @@ public class Food implements Serializable {
     private double carbs;
     private double fats;
 
-    //REQUIRES double parameters to be >=0
-    //MODIFIES this
-    //EFFECT sets the default variables values on this object
 
     public Food() {
         name = "";
@@ -98,6 +95,7 @@ public class Food implements Serializable {
                 + "%-10.2f" + "Fats:" + "%-10.2f \n", name, calories, protein, carbs, fats);
     }
 
+    //EFFECTS Checks if it's the same food object or if the food objects have the same name.
     @Override
     public boolean equals(Object o) {
         if (o instanceof Food) {
@@ -111,9 +109,4 @@ public class Food implements Serializable {
         }
     }
 
-    @Override
-    public int hashCode() {
-        char c = name.charAt(0);
-        return (int)c;
-    }
 }

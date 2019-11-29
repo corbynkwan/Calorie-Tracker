@@ -19,6 +19,7 @@ public class SelectUserGUI extends JFrame implements ActionListener {
     private JButton selectButton;
     private JButton createUserButton;
 
+    //EFFECTS Human can select which user they want to select or create a user.
     public SelectUserGUI() {
         setTitle("Select User");
 
@@ -48,6 +49,8 @@ public class SelectUserGUI extends JFrame implements ActionListener {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
+    //EFFECTS if e is selectButton. Goes to the MainMenuGUI of the selected user
+    //        else if e is createUserButton. Goes to CreateUserGUI
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == selectButton) {

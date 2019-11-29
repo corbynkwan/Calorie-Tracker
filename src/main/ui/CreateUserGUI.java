@@ -1,5 +1,6 @@
 package ui;
 
+import exceptions.InvalidInputException;
 import model.BodyBuildingDiet;
 import model.Diet;
 import model.KetoDiet;
@@ -13,6 +14,7 @@ import java.awt.event.ActionListener;
 public class CreateUserGUI extends JFrame implements ActionListener {
     String name;
     Diet dietType;
+    double targetWeight;
     private JLabel nameLabel;
     private JTextField nameTextField;
     private JLabel dietTypeLabel;
@@ -30,7 +32,7 @@ public class CreateUserGUI extends JFrame implements ActionListener {
         nameTextField = new JTextField(10);
         dietTypeLabel = new JLabel("Diet Type:");
         dietTypeComboBox = new JComboBox();
-        targetWeightLabel = new JLabel("Target Weight:");
+        targetWeightLabel = new JLabel("Target Weight (lb):");
         targetWeightTextField = new JTextField(2);
         addUserButton = new JButton("Add User");
         backButton = new JButton("Back");
@@ -57,6 +59,9 @@ public class CreateUserGUI extends JFrame implements ActionListener {
     }
 
     @Override
+    //MODIFIES this
+    //EFFECTS if e is addUserButton, adds the user to the userList and saves it
+    //        else if e is backButton Goes back to SelectUserGUI
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == addUserButton) {
             name = nameTextField.getText();
@@ -66,17 +71,9 @@ public class CreateUserGUI extends JFrame implements ActionListener {
                 dietType = new KetoDiet();
             }
             try {
-                double targetWeight = Integer.parseInt(targetWeightTextField.getText());
+                targetWeight = Integer.parseInt(targetWeightTextField.getText());
                 //Adding user with the same name.
-                if (SelectUserGUI.userList.add(new User(name, dietType, targetWeight)) == false) {
-                    sound.run();
-                    JOptionPane.showMessageDialog(this, "User with the same name already exists");
-                } else {
-                    SelectUserGUI.userList.add(new User(name, dietType, targetWeight));
-                    SelectUserGUI.userList.save("userList.dat");
-                    dispose();
-                    new SelectUserGUI();
-                }
+                userNotAddedCondtion();
             } catch (Exception error) {
                 sound.run();
                 JOptionPane.showMessageDialog(this, "Invalid Input. Try Again");
@@ -84,6 +81,27 @@ public class CreateUserGUI extends JFrame implements ActionListener {
         } else if (e.getSource() == backButton) {
             dispose();
             new SelectUserGUI();
+        }
+    }
+
+    public void userNotAddedCondtion() throws InvalidInputException {
+        if (SelectUserGUI.userList.add(new User(name, dietType, targetWeight)) == false) {
+            sound.run();
+            JOptionPane.showMessageDialog(this, "User with the same name already exists");
+        } else {
+            userAddedCondition();
+        }
+    }
+
+    public void userAddedCondition() {
+        try {
+            SelectUserGUI.userList.add(new User(name, dietType, targetWeight));
+            SelectUserGUI.userList.save("userList.dat");
+            dispose();
+            new SelectUserGUI();
+        } catch (Exception error) {
+            sound.run();
+            JOptionPane.showMessageDialog(this, "Unable to save userList");
         }
     }
 

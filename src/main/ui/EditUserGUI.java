@@ -20,6 +20,8 @@ public class EditUserGUI extends JFrame implements ActionListener {
     private JTextField targetWeightTextField;
     private JButton editUserButton;
     private JButton backButton;
+    Diet dietType;
+    String name;
     final Runnable sound = (Runnable)Toolkit.getDefaultToolkit().getDesktopProperty("win.sound.default");
 
     public EditUserGUI() {
@@ -49,45 +51,54 @@ public class EditUserGUI extends JFrame implements ActionListener {
         editUserButton.addActionListener(this);
         backButton.addActionListener(this);
         backButton.setBounds(500, 50, 150, 100);
-        setLayout(new FlowLayout()); //Put FlowLayout so that border layout is not put where 1 label is put on top of the other.
+        setLayout(new FlowLayout());
         setVisible(true); //Better to put the methods here so you don't call them in the main method.
         setSize(500, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     }
+    //MODIFIES MainMenuGUI() user
+    //EFFECTS If e is editButton Edits user's fields based on user input
+    //        else if e is backButton goes back to MainMenuGUI
+    //
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == editUserButton) {
-            String name = nameTextField.getText();
-            Diet dietType;
+            name = nameTextField.getText();
+
             if (dietTypeComboBox.getSelectedIndex() == 0) {
                 dietType = new BodyBuildingDiet();
             } else {
                 dietType = new KetoDiet();
             }
             try {
-                double targetWeight = Integer.parseInt(targetWeightTextField.getText());
-                MainMenuGUI.user.setDietType(dietType);
-                MainMenuGUI.user.setTargetWeight(targetWeight);
-                File oldFileName = new File(MainMenuGUI.user.getName() + "FoodList.dat");
-                if (SelectUserGUI.userList.contains(new User(name,new BodyBuildingDiet(),5))) {
-                    sound.run();
-                    JOptionPane.showMessageDialog(this, "User with same name already exists");
-                } else {
-                    MainMenuGUI.user.setName(name);
-                    SelectUserGUI.userList.save("userList.dat");
-                    dispose();
-                    File newFileName = new File(MainMenuGUI.user.getName() + "FoodList.dat");
-                    oldFileName.renameTo(newFileName);
-                    new MainMenuGUI(MainMenuGUI.user);
-                }
+                editUserAndErrorHandling();
             } catch (Exception error) {
                 sound.run();
                 JOptionPane.showMessageDialog(this, "Invalid Input. Try Again");
             }
         } else if (e.getSource() == backButton) {
             dispose();
+            new MainMenuGUI(MainMenuGUI.user);
+        }
+    }
+
+    public void editUserAndErrorHandling() throws Exception {
+        double targetWeight = Integer.parseInt(targetWeightTextField.getText());
+        MainMenuGUI.user.setDietType(dietType);
+        MainMenuGUI.user.setTargetWeight(targetWeight);
+        File oldFileName = new File(MainMenuGUI.user.getName() + "FoodList.dat");
+        if (SelectUserGUI.userList.contains(new User(name,new BodyBuildingDiet(),5))
+                && !(name.equals(MainMenuGUI.user.getName()))) {
+            sound.run();
+            JOptionPane.showMessageDialog(this, "User with same name already exists");
+        } else {
+            MainMenuGUI.user.setName(name);
+            SelectUserGUI.userList.save("userList.dat");
+            dispose();
+            File newFileName = new File(MainMenuGUI.user.getName() + "FoodList.dat");
+            oldFileName.renameTo(newFileName);
             new MainMenuGUI(MainMenuGUI.user);
         }
     }

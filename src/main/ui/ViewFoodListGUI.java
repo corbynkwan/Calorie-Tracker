@@ -11,6 +11,8 @@ public class ViewFoodListGUI extends JFrame implements ActionListener {
     JTable table;
     JButton backButton;
 
+    //MODIFIES this
+    //EFFECTS User can view the foodList and it's macronutrients values through JTable
     public ViewFoodListGUI() {
         setTitle("Food List");
 
@@ -48,6 +50,7 @@ public class ViewFoodListGUI extends JFrame implements ActionListener {
 
     }
 
+    //EFFECTS if e is backButton. Goes back to MainMenuGUI
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == backButton) {

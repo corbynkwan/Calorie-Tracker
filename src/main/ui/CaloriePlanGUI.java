@@ -10,12 +10,12 @@ import java.util.ArrayList;
 
 public class CaloriePlanGUI extends JFrame implements ActionListener {
 
-    JButton removeFoodButton;
-    JTable table;
-    JButton addFoodButton;
+    private JButton removeFoodButton;
+    private JTable table;
+    private JButton addFoodButton;
     private JButton backButton;
     private JButton resetButton;
-    Object[][] array;
+    private Object[][] array;
     public static ArrayList<ArrayList<Object>> data = new ArrayList<ArrayList<Object>>();
     final Runnable sound = (Runnable)Toolkit.getDefaultToolkit().getDesktopProperty("win.sound.default");
 
@@ -39,7 +39,6 @@ public class CaloriePlanGUI extends JFrame implements ActionListener {
             totalPro += (Double)data.get(i).get(2);
             totalCarbs += (Double)data.get(i).get(3);
             totalFats += (Double)data.get(i).get(4);
-
         }
         array[array.length - 2][0] = "TOTAL";
         array[array.length - 2][1] = totalCal;
@@ -56,9 +55,7 @@ public class CaloriePlanGUI extends JFrame implements ActionListener {
         table = new JTable(array, columnNames);
         add(table);
         addFoodButton = new JButton("Add Food");
-        // Frame Size
         JScrollPane scrollPane = new JScrollPane(table);
-        //scrollPane.setSize();
         removeFoodButton = new JButton("Remove Food");
         backButton = new JButton("Back");
         resetButton = new JButton("Reset");
@@ -96,6 +93,10 @@ public class CaloriePlanGUI extends JFrame implements ActionListener {
     }
 
     @Override
+    //MODIFIES this
+    //EFFECTS if e is removeFoodButton. Removes the Selected Food.
+    //        else if e is addFoodButton. Goes to AddFoodToCaloriePlanGUI
+    //        else if e is backButton. Goes back to MainMenuGUI
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == addFoodButton) {
             dispose();

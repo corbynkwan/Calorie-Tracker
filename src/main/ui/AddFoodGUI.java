@@ -34,7 +34,6 @@ public class AddFoodGUI extends JFrame implements ActionListener {
         proLabel = new JLabel("Protein (100g):");
         carbsLabel = new JLabel("Carbs (100g):");
         fatsLabel = new JLabel("Fats (100g):");
-
         nameTextField = new JTextField(5);
         calTextField = new JTextField(2);
         proTextField = new JTextField(2);
@@ -64,6 +63,8 @@ public class AddFoodGUI extends JFrame implements ActionListener {
 
     }
 
+    //EFFECTS if e is addFoodButton. Adds the food the foodList file and saves it.
+    //        if its the back button. Goes back to MainMenuGUI.
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == addFoodButton) {

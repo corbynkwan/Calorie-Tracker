@@ -23,6 +23,7 @@ public class AddFoodToCaloriePlanGUI extends JFrame implements ActionListener {
     JButton addFoodButton;
     JButton backButton;
     ArrayList<Object> foodToBeAdded;
+    Object[][] array;
     final Runnable sound = (Runnable)Toolkit.getDefaultToolkit().getDesktopProperty("win.sound.default");
 
     public AddFoodToCaloriePlanGUI() {
@@ -30,6 +31,26 @@ public class AddFoodToCaloriePlanGUI extends JFrame implements ActionListener {
         //Display that food list using a table using a for loop probably
         String[] columnNames = {"Name", "Calories", "Protein", "Carbs", "Fats"};
         foodArray = new ArrayList<ArrayList<Object>>();
+        convertArrayToArrayList();
+        table = new JTable(array, columnNames);
+        addFoodButton = new JButton("Add Food");
+        backButton = new JButton("Back");
+        addFoodButton.addActionListener(this);
+        backButton.addActionListener(this);
+        // Frame Size
+        JScrollPane scrollPane = new JScrollPane(table);
+        table.setFillsViewportHeight(true);
+        add(scrollPane);
+        add(backButton);
+        add(addFoodButton);
+        setLayout(new FlowLayout());
+        setVisible(true); //Better to put the methods here so you don't call them in the main method.
+        setSize(500, 600);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+    //MODIFIES this
+    //EFFECTS converts the foodList ArrayList to a 2D Array to add to the JTable
+    public void convertArrayToArrayList() {
         for (int i = 0; i < MainMenuGUI.foodList.size(); i++) {
             ArrayList<Object> a = new ArrayList<>();
             a.add(MainMenuGUI.foodList.get(i).getName());
@@ -40,43 +61,29 @@ public class AddFoodToCaloriePlanGUI extends JFrame implements ActionListener {
             foodArray.add(a);
             a = new ArrayList<>();
         }
-        Object[][] array = new Object[foodArray.size()][];
+        array = new Object[foodArray.size()][];
         for (int i = 0; i < foodArray.size(); i++) {
             ArrayList<Object> row = foodArray.get(i);
             array[i] = row.toArray(new Object[row.size()]);
         }
-        table = new JTable(array, columnNames);
-        addFoodButton = new JButton("Add Food");
-        backButton = new JButton("Back");
-        addFoodButton.addActionListener(this);
-        backButton.addActionListener(this);
-        // Frame Size
-        JScrollPane scrollPane = new JScrollPane(table);
-        //scrollPane.setSize();
-        table.setFillsViewportHeight(true);
-        add(scrollPane);
-        add(backButton);
-        add(addFoodButton);
-        setLayout(new FlowLayout());
-        setVisible(true); //Better to put the methods here so you don't call them in the main method.
-        setSize(500, 600);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-
     }
 
+    //EFFECTS saves an object to  fileName
     public void save(String fileName) throws Exception {
         try (ObjectOutputStream out = new ObjectOutputStream(Files.newOutputStream(Paths.get(fileName)))) {
             out.writeObject(this);
         }
     }
 
+    //EFFECTS loads an object from fileName
     public Object load(String fileName) throws IOException, ClassNotFoundException {
         try (ObjectInputStream in = new ObjectInputStream(Files.newInputStream(Paths.get(fileName)))) {
             return in.readObject();
         }
     }
 
+    //EFFECTS if e is addFoodButton. Adds the food to the Calorie Planner.
+    //        else if e is backButton. Goes Back to CaloriePlannerGUI
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == addFoodButton) {
