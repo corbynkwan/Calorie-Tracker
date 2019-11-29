@@ -14,6 +14,7 @@ public class SaveAndLoad  {
             out.writeObject(this);
         }
     }
+
     //EFFECTS loads an object from fileName;
     public Object load(String fileName) throws IOException, ClassNotFoundException {
         try (ObjectInputStream in = new ObjectInputStream(Files.newInputStream(Paths.get(fileName)))) {
