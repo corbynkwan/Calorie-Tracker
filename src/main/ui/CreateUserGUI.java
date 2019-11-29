@@ -84,6 +84,7 @@ public class CreateUserGUI extends JFrame implements ActionListener {
         }
     }
 
+    //EFFECTS show an error message when the user exists
     public void userNotAddedCondtion() throws InvalidInputException {
         if (SelectUserGUI.userList.add(new User(name, dietType, targetWeight)) == false) {
             sound.run();
@@ -93,10 +94,12 @@ public class CreateUserGUI extends JFrame implements ActionListener {
         }
     }
 
+    //EFFECTS  Creates a user and saves it to the user list
     public void userAddedCondition() {
         try {
             SelectUserGUI.userList.add(new User(name, dietType, targetWeight));
             SelectUserGUI.userList.save("userList.dat");
+            JOptionPane.showMessageDialog(this, "User created");
             dispose();
             new SelectUserGUI();
         } catch (Exception error) {

@@ -46,6 +46,7 @@ public class CaloriePlanGUI extends JFrame implements ActionListener {
         array[array.length - 2][3] = totalCarbs;
         array[array.length - 2][4] = totalFats;
 
+        System.out.println(MainMenuGUI.user.getDietType().calculateCal());
         array[array.length - 1][0] = "TARGET TOTAL";
         array[array.length - 1][1] = MainMenuGUI.user.getDietType().calculateCal();
         array[array.length - 1][2] = MainMenuGUI.user.getDietType().calculatePro();

@@ -85,9 +85,10 @@ public class EditUserGUI extends JFrame implements ActionListener {
     }
 
     public void editUserAndErrorHandling() throws Exception {
-        double targetWeight = Integer.parseInt(targetWeightTextField.getText());
         MainMenuGUI.user.setDietType(dietType);
+        double targetWeight = Integer.parseInt(targetWeightTextField.getText());
         MainMenuGUI.user.setTargetWeight(targetWeight);
+        MainMenuGUI.user.getDietType().setTargetWeight(targetWeight);
         File oldFileName = new File(MainMenuGUI.user.getName() + "FoodList.dat");
         if (SelectUserGUI.userList.contains(new User(name,new BodyBuildingDiet(),5))
                 && !(name.equals(MainMenuGUI.user.getName()))) {
@@ -95,6 +96,7 @@ public class EditUserGUI extends JFrame implements ActionListener {
             JOptionPane.showMessageDialog(this, "User with same name already exists");
         } else {
             MainMenuGUI.user.setName(name);
+            JOptionPane.showMessageDialog(this, "User edited");
             SelectUserGUI.userList.save("userList.dat");
             dispose();
             File newFileName = new File(MainMenuGUI.user.getName() + "FoodList.dat");

@@ -54,10 +54,15 @@ public class SelectUserGUI extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == selectButton) {
-            int index = comboBox.getSelectedIndex();
-            User user = userList.get(index);
-            new MainMenuGUI(user);
-            dispose();
+            try {
+                int index = comboBox.getSelectedIndex();
+                User user = userList.get(index);
+                JOptionPane.showMessageDialog(this, "User selected");
+                new MainMenuGUI(user);
+                dispose();
+            } catch (ArrayIndexOutOfBoundsException error) {
+                JOptionPane.showMessageDialog(this, "No users created yet");
+            }
         } else if (e.getSource() == createUserButton) {
             new CreateUserGUI();
             dispose();

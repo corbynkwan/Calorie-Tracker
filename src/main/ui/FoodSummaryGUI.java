@@ -51,6 +51,7 @@ public class FoodSummaryGUI extends JFrame implements ActionListener {
         if (e.getSource() == searchButton) {
             try {
                 summary = fs.fetchSummary(foodToSearchTextField.getText());
+                JOptionPane.showMessageDialog(this, "Food Summary completed");
                 dispose();
                 new FoodSummaryGUI(summary);
             } catch (Exception error) {

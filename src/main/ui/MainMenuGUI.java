@@ -25,6 +25,9 @@ public class MainMenuGUI extends JFrame implements ActionListener {
     public static FoodList foodList;
 
     public MainMenuGUI(User user) {
+        System.out.println(user.getDietType().getClass().toString());
+        System.out.println(user.getTargetWeight());
+
         setTitle("Main Menu");
 
         try {

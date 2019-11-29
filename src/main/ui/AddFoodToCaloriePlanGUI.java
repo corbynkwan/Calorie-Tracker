@@ -93,6 +93,7 @@ public class AddFoodToCaloriePlanGUI extends JFrame implements ActionListener {
                 i = table.getSelectedRow();
                 foodToBeAdded = new ArrayList<>();
                 CaloriePlanGUI.data.add(foodToBeAdded);
+                JOptionPane.showMessageDialog(this, "Food added to Calorie Plan");
                 addToArrayList(i);
                 dispose();
                 new CaloriePlanGUI();

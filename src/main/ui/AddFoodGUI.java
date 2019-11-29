@@ -69,11 +69,11 @@ public class AddFoodGUI extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == addFoodButton) {
             try {
-                Food newFood = new Food(nameTextField.getText(),
-                        Integer.parseInt(calTextField.getText()),
+                Food newFood = new Food(nameTextField.getText(), Integer.parseInt(calTextField.getText()),
                         Integer.parseInt(proTextField.getText()),
                         Integer.parseInt(carbsTextField.getText()), Integer.parseInt(fatsTextField.getText()));
                 MainMenuGUI.foodList.add(newFood);
+                JOptionPane.showMessageDialog(this, "Food added to Food List");
                 MainMenuGUI.foodList.save(MainMenuGUI.user.getName() + "FoodList.dat");
                 dispose();
                 new MainMenuGUI(MainMenuGUI.user);

@@ -40,6 +40,7 @@ public class DeleteUserGUI extends JFrame implements ActionListener {
             } catch (Exception error) {
                 System.out.println("Unable to save");
             }
+            JOptionPane.showMessageDialog(this, "User deleted");
             dispose();
             new SelectUserGUI();
         } else if (e.getSource() == noButton) {
