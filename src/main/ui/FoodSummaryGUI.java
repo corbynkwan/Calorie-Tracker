@@ -17,6 +17,7 @@ public class FoodSummaryGUI extends JFrame implements ActionListener {
     final Runnable sound = (Runnable)Toolkit.getDefaultToolkit().getDesktopProperty("win.sound.default");
 
     public FoodSummaryGUI(String summary) {
+        setTitle("Food Summary");
         this.summary = summary;
         fs = new FoodSummary();
         foodToSearchTextField = new JTextField(5);
@@ -46,6 +47,9 @@ public class FoodSummaryGUI extends JFrame implements ActionListener {
 
     }
 
+    //MODIFIES this
+    //EFFECTS if e is searchButton. Changes summary value to Google's summary of inputted food.
+    //        if e is backButton goes back to MainMenuGUI
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == searchButton) {

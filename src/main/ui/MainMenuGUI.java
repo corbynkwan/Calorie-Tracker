@@ -25,15 +25,11 @@ public class MainMenuGUI extends JFrame implements ActionListener {
     public static FoodList foodList;
 
     public MainMenuGUI(User user) {
-        System.out.println(user.getDietType().getClass().toString());
-        System.out.println(user.getTargetWeight());
-
         setTitle("Main Menu");
 
         try {
             foodList = (FoodList) load(user.getName() + "FoodList.dat");
         } catch (Exception e) {
-            System.out.println("Files couldn't be loaded so new file for FoodList are created");
             foodList = new FoodList();
         }
         this.user = user;

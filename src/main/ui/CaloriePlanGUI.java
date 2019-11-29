@@ -1,7 +1,5 @@
 package ui;
 
-import model.Food;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -75,21 +73,6 @@ public class CaloriePlanGUI extends JFrame implements ActionListener {
         setLayout(new FlowLayout());
         setVisible(true); //Better to put the methods here so you don't call them in the main method.
         setSize(500, 600);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    }
-
-    public CaloriePlanGUI(Food f) {
-        //Not sure if this class is needed
-        String[][] data = {};
-        String[] columnNames = {"Name", "Calories", "Protein", "Carbs", "Fats"};
-        table.setBounds(30, 40, 200, 300);
-        table = new JTable(data, columnNames);
-        add(table);
-
-
-        setLayout(null); //Put FlowLayout so that border layout is not put where 1 label is put on top of the other.
-        setVisible(true); //Better to put the methods here so you don't call them in the main method.
-        setSize(600, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 

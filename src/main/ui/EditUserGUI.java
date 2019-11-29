@@ -57,11 +57,10 @@ public class EditUserGUI extends JFrame implements ActionListener {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     }
+
     //MODIFIES MainMenuGUI() user
     //EFFECTS If e is editButton Edits user's fields based on user input
     //        else if e is backButton goes back to MainMenuGUI
-    //
-
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == editUserButton) {
@@ -84,6 +83,8 @@ public class EditUserGUI extends JFrame implements ActionListener {
         }
     }
 
+    //MODIFIES this
+    //EFFECTS Edits user based on user input
     public void editUserAndErrorHandling() throws Exception {
         MainMenuGUI.user.setDietType(dietType);
         double targetWeight = Integer.parseInt(targetWeightTextField.getText());

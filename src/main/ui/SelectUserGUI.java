@@ -27,7 +27,7 @@ public class SelectUserGUI extends JFrame implements ActionListener {
         try {
             userList = (UserList) load("userList.dat");
         } catch (Exception e) {
-            System.out.println("Files couldn't be loaded so new file for UserList and FoodList are created");
+            JOptionPane.showMessageDialog(this, "Files do not exists so new file for UserList created");
             userList = new UserList();
         }
 
@@ -69,12 +69,14 @@ public class SelectUserGUI extends JFrame implements ActionListener {
         }
     }
 
+    //EFFECTS save an object into fileName
     public void save(String fileName) throws Exception {
         try (ObjectOutputStream out = new ObjectOutputStream(Files.newOutputStream(Paths.get(fileName)))) {
             out.writeObject(this);
         }
     }
 
+    //EFFECT loads an object from fileName
     public Object load(String fileName) throws IOException, ClassNotFoundException {
         try (ObjectInputStream in = new ObjectInputStream(Files.newInputStream(Paths.get(fileName)))) {
             return in.readObject();

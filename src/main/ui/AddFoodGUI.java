@@ -87,12 +87,14 @@ public class AddFoodGUI extends JFrame implements ActionListener {
         }
     }
 
+    //EFFECTS saves object into file
     public void save(String fileName) throws Exception {
         try (ObjectOutputStream out = new ObjectOutputStream(Files.newOutputStream(Paths.get(fileName)))) {
             out.writeObject(this);
         }
     }
 
+    //EFFECTS loads object from file
     public Object load(String fileName) throws IOException, ClassNotFoundException {
         try (ObjectInputStream in = new ObjectInputStream(Files.newInputStream(Paths.get(fileName)))) {
             return in.readObject();
