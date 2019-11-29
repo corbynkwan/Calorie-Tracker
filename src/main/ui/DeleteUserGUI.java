@@ -26,6 +26,7 @@ public class DeleteUserGUI extends JFrame implements ActionListener {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     }
+
     //MODIFIES SelectUserGUI() userList
     //EFFECTS removes this user from userList
     @Override

@@ -48,6 +48,7 @@ public class AddFoodToCaloriePlanGUI extends JFrame implements ActionListener {
         setSize(500, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
+
     //MODIFIES this
     //EFFECTS converts the foodList ArrayList to a 2D Array to add to the JTable
     public void convertArrayToArrayList() {

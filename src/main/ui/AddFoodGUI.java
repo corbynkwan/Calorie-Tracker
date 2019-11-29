@@ -69,7 +69,9 @@ public class AddFoodGUI extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == addFoodButton) {
             try {
-                Food newFood = new Food(nameTextField.getText(), Integer.parseInt(calTextField.getText()), Integer.parseInt(proTextField.getText()),
+                Food newFood = new Food(nameTextField.getText(),
+                        Integer.parseInt(calTextField.getText()),
+                        Integer.parseInt(proTextField.getText()),
                         Integer.parseInt(carbsTextField.getText()), Integer.parseInt(fatsTextField.getText()));
                 MainMenuGUI.foodList.add(newFood);
                 MainMenuGUI.foodList.save(MainMenuGUI.user.getName() + "FoodList.dat");
