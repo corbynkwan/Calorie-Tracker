@@ -79,6 +79,7 @@ public class MainMenuGUI extends JFrame implements ActionListener {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     }
+
     //EFFECTS goes to respective GUI based on which button the user clicked.
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -112,12 +113,14 @@ public class MainMenuGUI extends JFrame implements ActionListener {
             new FoodSummaryGUI("");
         }
     }
+
     //EFFECTS Saves an object to a file
     public void save(String fileName) throws Exception {
         try (ObjectOutputStream out = new ObjectOutputStream(Files.newOutputStream(Paths.get(fileName)))) {
             out.writeObject(this);
         }
     }
+
     //EFFECTS Loads an object from a file
     public Object load(String fileName) throws IOException, ClassNotFoundException {
         try (ObjectInputStream in = new ObjectInputStream(Files.newInputStream(Paths.get(fileName)))) {
