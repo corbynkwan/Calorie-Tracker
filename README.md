@@ -1,10 +1,5 @@
 # Calorie Tracker
 
-![Project Image](./src/assets/images/fruitsunion.png)
-
-
----
-
 ### Table of Contents
 
 - [Description](#description)
@@ -27,7 +22,7 @@
 
 ## Description
 
-As an avid bodybuilder, I've always wanted to track my calories without having to pay absurd monthly fees to websites such as myFitnessPal and Cronometer therefore I decided to make one myself!  
+As an avid bodybuilder, I've always wanted to track my calories without having to pay absurd monthly fees to websites such as MyFitnessPal and Cronometer therefore I decided to make one myself!  
 
 #### Technologies
 
@@ -37,8 +32,9 @@ As an avid bodybuilder, I've always wanted to track my calories without having t
 
 #### Packages I think are important
 
-- /model
-- /ui
+- `out\production\CalorieTracker\model`
+- `out\production\CalorieTracker\ui`
+- `out\test`
 
 [Back To The Top](#4Hour-Fruit-Shop-Website-Coding-Challenge)
 
